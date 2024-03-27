@@ -1,21 +1,52 @@
-def count_digits(n):
-    if n == 0:
-        return 0
-    return 1 + count_digits(n // 10)
+#include <stdio.h>
+#include <math.h>
 
-def is_armstrong_recursive(n, num_digits):
-    if n == 0:
-        return 0
-    return (n % 10) ** num_digits + is_armstrong_recursive(n // 10, num_digits)
+// Function to count the number of digits in a number
+int countDigits(int num) {
+    int count = 0;
+    while (num != 0) {
+        num /= 10;
+        count++;
+    }
+    return count;
+}
 
-def is_armstrong(n):
-    num_digits = count_digits(n)
-    sum_of_digits = is_armstrong_recursive(n, num_digits)
-    return sum_of_digits == n
+// Function to check if a number is an Armstrong number
+int isArmstrong(int num) {
+    int originalNum, remainder, result = 0, n = 0;
 
-# Example usage:
-number = int(input("Enter a number to check if it's Armstrong or not: "))
-if is_armstrong(number):
-    print(number, "is an Armstrong number.")
-else:
-    print(number, "is not an Armstrong number.")
+    // Storing the number of digits in originalNum variable
+    originalNum = num;
+
+    // Count number of digits
+    n = countDigits(num);
+
+    // Calculate the result
+    while (originalNum != 0) {
+        remainder = originalNum % 10;
+        result += pow(remainder, n);
+        originalNum /= 10;
+    }
+
+    // Check if num is equal to the result
+    if (result == num)
+        return 1; // It's an Armstrong number
+    else
+        return 0; // It's not an Armstrong number
+}
+
+int main() {
+    int num;
+
+    // Input a number from the user
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Check if the number is Armstrong or not
+    if (isArmstrong(num))
+        printf("%d is an Armstrong number.\n", num);
+    else
+        printf("%d is not an Armstrong number.\n", num);
+
+    return 0;
+}
