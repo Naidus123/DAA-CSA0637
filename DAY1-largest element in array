@@ -1,13 +1,41 @@
-def find_largest_element(arr):
-    if not arr:
-        return None  # Return None for empty arrays
-    max_element = arr[0]
-    for num in arr:
-        if num > max_element:
-            max_element = num
-    return max_element
+#include <stdio.h>
 
-# Example usage:
-array = [3, 7, 2, 9, 5]
-largest_element = find_largest_element(array)
-print("The largest element in the array is:", largest_element)
+// Function to find the largest element in an array
+int findLargest(int arr[], int size) {
+    // Assuming the first element as the largest
+    int largest = arr[0];
+
+    // Traverse the array and update the largest if a larger element is found
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > largest) {
+            largest = arr[i];
+        }
+    }
+
+    return largest;
+}
+
+int main() {
+    int size;
+
+    // Input the size of the array from the user
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    // Declare an array of given size
+    int arr[size];
+
+    // Input elements of the array from the user
+    printf("Enter %d elements of the array: ", size);
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Find the largest element in the array
+    int largest = findLargest(arr, size);
+
+    // Print the largest element
+    printf("The largest element in the array is: %d\n", largest);
+
+    return 0;
+}
