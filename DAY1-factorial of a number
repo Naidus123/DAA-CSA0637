@@ -1,10 +1,28 @@
-def factorial(n):
-    if n == 0 or n == 1:
-        return 1
-    else:
-        return n * factorial(n - 1)
+#include <stdio.h>
 
-# Example usage:
-number = int(input("Enter a number to find its factorial: "))
-result = factorial(number)
-print("The factorial of", number, "is:", result)DAY1-factorial of a number
+// Function to calculate the factorial of a number
+unsigned long long factorial(int n) {
+    unsigned long long fact = 1;
+    for (int i = 1; i <= n; ++i) {
+        fact *= i;
+    }
+    return fact;
+}
+
+int main() {
+    int num;
+
+    // Input a number from the user
+    printf("Enter a positive integer: ");
+    scanf("%d", &num);
+
+    // Check if the number is negative
+    if (num < 0) {
+        printf("Error: Factorial is not defined for negative numbers.\n");
+    } else {
+        // Calculate and print the factorial
+        printf("Factorial of %d = %llu\n", num, factorial(num));
+    }
+
+    return 0;
+}
