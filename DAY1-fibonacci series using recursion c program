@@ -1,17 +1,32 @@
-def fibonacci(n):
-    if n <= 1:
-        return n
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
+#include <stdio.h>
 
-def print_fibonacci_series(count):
-    if count <= 0:
-        print("Please enter a positive integer.")
-    else:
-        print("Fibonacci Series:")
-        for i in range(count):
-            print(fibonacci(i), end=" ")
+// Function to generate the nth Fibonacci number using recursion
+int fibonacci(int n) {
+    // Base cases
+    if (n <= 1)
+        return n;
+    // Recursive case
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
 
-# Example usage:
-count = 10  # Change this to the number of Fibonacci numbers you want to print
-print_fibonacci_series(count)
+// Function to print Fibonacci series up to n terms
+void printFibonacciSeries(int n) {
+    printf("Fibonacci Series up to %d terms:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", fibonacci(i));
+    }
+    printf("\n");
+}
+
+int main() {
+    int n;
+
+    // Input the number of terms from the user
+    printf("Enter the number of terms in Fibonacci series: ");
+    scanf("%d", &n);
+
+    // Print Fibonacci series up to n terms
+    printFibonacciSeries(n);
+
+    return 0;
+}
